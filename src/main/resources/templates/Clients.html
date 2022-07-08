@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta lang="FR" charset="UTF-8">
+<title>Menu Clients</title>
+</head>
+<body>
+
+<!-- 1er Tableau
+Vue Clients des Clients 
+	Edition: Ajout Clients -->
+	
+	<h2>Table Clients</h2>
+	<table class="style-table">
+		<thead>
+			<tr>
+				<th>Clients</th>
+				<th>Sirets</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr th:each="client : ${clients}"> 
+				<td th:text="${client.RaisonSociale}">futurClients </td>
+				<td th:text="${client.siret}">siret_futur_client </td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+
+<!-- 2eme Tableau
+		Client / Numero Cde / commandes en cours /totals -->
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Menu Magasin</title>
+</head>
+<body>
+		<h2>Status Stock</h2>
+		
+		<table>
+			<thead>
+				<tr>
+					<th>Magasin </th>
+					<th>Stock Fils </th>
+					<th>Stock Connecteurs </th>
+					<th>Stock Protections </th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="magasin: ${magasins}">
+					<td th:text="${magasin.VilleMagasin}"> </td>
+					<td th:text="${magasin.StockFils}"> </td>
+					<td th:text="${magasin.StockConnecteurs}"> </td>
+					<td th:text="${magasin.StockProtection}"> </td>
+				</tr>
+				
+			</tbody>
+		</table>
+</body>
+</html>

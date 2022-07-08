@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html  lang="FR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Menu Fabrication</title>
+</head>
+<body>
+<!-- Selection Commande commandes en cours / Details / Case a cocher Fabriqué  -->
+	<h2>Liste des Cablages à Produire</h2>
+	<table>
+		<thead>
+			<tr>
+				<th> IdCommande </th>
+				<th> Clients </th>
+				<th> Référence plan </th>
+				<th> Version </th>
+				<th> Quantité à produire </th>
+				<th:block th:if="${showEdition}">
+					<th> Quantité selectionné </th>
+					<th> Selection Magasin <th>
+					<th> Selection Commande </th>
+				</th:block>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="produit_reste_produire,state: ${tableau_cablage_a_produire}">
+				
+				<td th:text="${produit_reste_produire.IdCommande}" >  </td>
+				
+				<td th:text="${produit_reste_produire.RaisonSociale}"  > </td>
+				<td th:text="${produit_reste_produire.reference}"  > </td>
+				<td th:text="${produit_reste_produire.version}"  > </td>
+				<td th:text="${produit_reste_produire.qty}"  > </td>
+				<th:block th:if="${showEdition}">
+					<td> <input type="number" th:id="|qty${state.index}|" name="quantity" min=1 th:max="${produit_reste_produire.qty}" > </td>
+					<td > 
+						<select>
+							<option value="0" > Selection magasin </option>
+							<option th:each="magasin:${magasins}" th:value="${magasin.VilleMagasin}" th:text="${magasin.VilleMagasin}">  </option>
+						</select> 
+					</td>
+					<td id="totalQty"> <input type="checkbox" th:id="|selectionCde{state.index}|" th:name="|selectionCde${state.index}|" th:checked="${selectedCablage}"> </td>
+				</th:block>
+			<!--renvoie les données sous une forme de string si case coché-->
+			<th:block th:if="${selectedCablage}">
+					<td> a été selectionné </td>
+			</th:block>		
+				
+			</tr>
+		</tbody>
+	</table>
+	
+	<br>
+	
+	
+	<form action="#" th:action="@{/Fabrication/vueSelection}" method="post">
+		<button type="submit" th:name="btEditPermission" th:value="${showEdition}"> Autorisation Fabrications cablage(s) </button>
+	</form>
+	<p th:text="${showEdition}"> </p>
+	
+
+		
+	
+	
+<!-- 	</div> -->
+	<script type="text/javascript">
+
+	</script>
+ 
+ 
+
+</body>
+</html>

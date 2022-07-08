@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="../static/css/signin.css"/>
+
+</head>
+<body>
+	<div>
+		<form action="/Signin_Controller" name="Signin_form" method="post" class="signin_form">
+			<ul>
+				<li><h2>Bienvenue</h2></li>
+				<li>
+					<label for="name"> Nom:</label> 
+					<input type="text" id="name" name="username">
+				</li>
+				<li>
+					<label for="Mdp">Mot de passe:</label>
+					<input type="password" id="Mdp" name="Mdp">
+				</li>
+				<li class="validationBouton">
+					<button type="submit">Valider</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+</body>
+</html>

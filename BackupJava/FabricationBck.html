@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html  lang="FR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Menu Fabrication</title>
+</head>
+<body>
+<!-- Selection Commande commandes en cours / Details / Case a cocher Fabriqué  -->
+	<h2>Liste des Cablages à Produire</h2>
+	<table>
+		<thead>
+			<tr>
+				<th> IdCommande </th>
+				<th> Clients </th>
+				<th> Référence plan </th>
+				<th> Version </th>
+				<th> Quantité a produire </th>
+				<th> Quantité à produire </th>
+				<th> Sélection Commande </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="produit_reste_produire,state: ${tableau_cablage_a_produire}">
+				<td th:text="${produit_reste_produire.IdCommande}" > </td>
+				<td th:text="${produit_reste_produire.RaisonSociale}"  > </td>
+				<td th:text="${produit_reste_produire.reference}"  > </td>
+				<td th:text="${produit_reste_produire.version}"  > </td>
+				<td th:text="${produit_reste_produire.qty}"  > </td>
+				<td> <input type="number" th:id="|qty${state.index}|" name="quantity" min=1 th:max="${produit_reste_produire.qty}"> </td>
+				<td id="totalQty"> <input type="checkbox" th:id="|selectionCde${state.index}|" name="selectionCde" > </td>
+				
+				
+				
+			</tr>
+		</tbody>
+	</table>
+	
+<!-- 	<div> -->
+<!-- 		<h4>selection des cablages a fabriquer</h4> -->
+<!-- 		<select id="Idcommande" name="Idcommande"> -->
+<!-- 			<option th:each="IdCde: ${tableau_cablage_a_produire}" -->
+<!-- 							th:value="${IdCde.IdCommande}" -->
+<!-- 							th:text="${IdCde.IdCommande}"/>  -->
+<!-- 		</select> -->
+		
+	
+	
+<!-- 	</div> -->
+	<script type="text/javascript">
+
+	</script>
+ 
+ 
+
+</body>
+</html>

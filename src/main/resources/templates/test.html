@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+<!-- Après requete GET avec un URL "http://localhost:8080/test", une variable provenant du controller est affiché -->
+	<p th:text="'Variable passé par le controleur :'+${boolController.isSelected}"> </p>
+	
+<!--Envoyer une requete GET avec ajout d'une variable dans l'URL : http://localhost:8080/test/variable -->
+	<a th:href="|http://localhost:8080/test/${boolController.isSelected}|"> requet GET</a> <span>envoie http://localhost:8080/test/<i>{valeur Variable}</i>, Obtient un String</span>
+	<br>
+	
+<!-- 	Après l'envoie de cette requete GET le controlleur renvoie un objet cablage  -->
+	<a th:href="@{http://localhost:8080/cablage}"> requet GET</a> <span>envoie http://localhost:8080/cablage, Obtient un Objet cablage en JSON</span>
+	<br>
+	<label for="uneCheckBox">Une checkbox:</label>
+	<input id="uneCheckBox" type="checkbox" name="uneCheckBox" th:checked="${boolController.getIsSelected}" th:value="${boolController.getIsSelected}"/>
+	
+	<a th:href="|http://localhost:8080/test/bt1Click/${boolController.isSelected}|">On envoie la valeur de la variable via le path, le controller change la valeur</a>
+	<br>
+	<a th:href="@{http://localhost:8080/test/bt1Click(uneCheckBox=${boolController.isSelected})}">on envoie le la valeur de la variable via un paramètre name=value</a>
+	
+	<p>On recupère la valeur du checkBox uniquement avec une method POST </p>
+	<p><strong>NOTE</strong> th:value est renvoyé au controleur<mark>uniquement si </mark> la case est coché!!!
+	<form action="#" th:action="@{/processCheckbox}" method="post">
+		<input type="checkbox" name="checkBox3"  value="ceci est un test"/>
+<!-- 		la ligne ci dessous est un Trick pour envoyé une valeur false quand la ce n'est pas coché  	 -->
+<!-- 		<input type="hidden" name="checkBox3" th:value="${boolController.getIsSelected}"  />	 -->
+		<div>
+			<button type="submit" name="update">update </button>
+		</div>
+		
+	</form>
+	
+	<p>une liste d'input Checkbox </p>
+
+	<form action="#" th:action="@{/processCheckboxes}" method="post">
+		<th:block th:each="checkbox, stat: ${myBoolean.getIsSelectedList()} "> 
+		<label for="|checkbox${stat.index}|" th:text="|checkbox${stat.index}|"> checkbox</label>
+		<input type="checkbox" id="|checkbox${stat.index}|" name="checkBox3es"  th:value="${stat.index}"/>
+
+		</th:block>
+		<div>
+			<button type="submit" name="update">update </button>
+		</div>
+		
+	</form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

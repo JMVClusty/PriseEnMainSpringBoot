@@ -1,0 +1,37 @@
+@charset "UTF-8";
+.menu{
+	position: relative;
+	top:100px;
+	 display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+/*     border-style: solid; */
+}
+.row {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+ 
+/*   border-style: solid; */
+
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  margin: 0px 20px;
+
+/* border-style: solid; */
+}
+
+
+.largeur{
+	width:200px;
+	margin: 10px;
+
+	text-align: center;
+}

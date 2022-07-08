@@ -1,0 +1,40 @@
+package com.ERP_Maison.Controller;
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+import com.ERP_Maison.repositery.ClientsDAO;
+
+
+@Controller
+public class ClientsController {
+
+	
+	
+	 private ClientsDAO clientsDao;
+	
+	@Autowired
+	public ClientsController(ClientsDAO clientsDao) {
+		super();
+		this.clientsDao = clientsDao;
+	
+	}
+
+
+
+
+		@GetMapping("/Clients")
+		public String showClients(Model model) {
+							
+				model.addAttribute("clients",clientsDao.list());
+								
+				return "Clients";
+			}
+		
+		
+}

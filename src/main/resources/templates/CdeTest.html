@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="FR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 	*******************************************************************************************************************************
+******************************************************L istes de Valeurs*************************************************************** -->
+	
+<!-- 	EXERCICE: RECUPÉRER UNE LISTE D'OBJET AVEC UN ATTRIBUT BOOLEAN -->
+<!-- 	-MÉTHODOLOGIE: CRÉÉR UN OBJET AVEC UNE PROPERTY STRING ET BOOLEEAN -->
+					
+
+<table>
+    <thead>
+        <tr>
+            <th> IdCommande </th>
+            <th> Référence </th>
+            <th> Sélection </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${detailCommandeTest.empty}">
+            <td colspan="2"> Pas de Commande Disponible </td>
+        </tr>
+        <tr th:each="cde : ${detailCommandeTest}">
+            <td><span th:text="${cde.IdCommande}"> Id </span></td>
+            <td><span th:text="${cde.reference}"> Ref </span></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

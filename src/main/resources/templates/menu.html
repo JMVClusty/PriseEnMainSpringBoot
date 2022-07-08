@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Menu</title>
+<link rel="stylesheet" th:href="@{css/menu.css}" href="../static/css/menu.css"/>
+</head>
+<body>
+	<div class="menu">
+			<div class="row">
+	
+				<div class="column">
+					<div class="largeur">Gestion des Clients</div>
+					<div class="largeur">
+						<a th:href="@{Clients}"><img alt="Clients"
+							th:src="@{images/Clients.jpg}"></a> 
+					</div>
+				</div>
+				<div class="column">
+					<div class="largeur">Gestion des Commandes</div>
+					<div class="largeur">
+						<a th:href="@{Commandes}"><img alt="Commandes"
+							th:src="@{images/Commandes.jpg}"></a>
+					</div>
+				</div>
+				<div class="column">
+					<div class="largeur">Gestion du magasin</div>
+					<div class="largeur">
+						<a th:href="@{Magasin}"> <img alt="Magasin"
+							 th:src="@{images/magasin.jpg}" src="../static/images/magasin.jpg"></a>
+					</div>
+				</div>
+				<div class="column">
+					<div class="largeur">Gestion des fabrications</div>
+					<div class="largeur">
+						<a th:href="@{Fabrication}" href="Fabrication"><img alt="Fabrication"
+							th:src="@{images/Fabrications.png}" src="../static/images/Fabrications.png"> </a> 
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

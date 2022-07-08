@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta lang="FR" charset="UTF-8">
+<title>menu Commande</title>
+</head>
+<body>
+
+	<!--    1er Tableau affichage Clients et meur nombres de commandes-->
+	<h2>Total Commande</h2>
+
+	<table>
+		<thead>
+			<tr>Clients</tr>
+			<tr>Nombre de Commandes</tr>
+		</thead>
+		<tbody>
+			<tr style="text-align: center" th:each="data: ${clients_commandes}">
+				<td th:text="${data.key}"></td>
+				<td style="text-align: center" th:text="${data.value}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<h4>Il y a <span th:text="${commande_non_commence}"></span> commandes qui n'ont pas débuté </h4>
+	
+
+
+
+	<!-- 
+		2eme Tableau avec affichage des details des commandes Réf cablage et quantité
+		Edition: Ajout Commande
+		
+		|  IdCommande | RaisonSociale | Référence | Version | quantité |-->
+		
+		<h2>Detail des Commandes</h2>
+	<table>
+		<thead>
+			<tr>IdCommande</tr>
+			<tr>RaisonSociale</tr>
+			<tr>Référence </tr>
+			<tr>Version </tr>
+			<tr>quantité </tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="data:${detailCommandes}">
+				<td th:text="${data.IdCommande}"> </td>
+				<td th:text="${data.RaisonSociale}"> </td>
+				<td th:text="${data.reference}"> </td>
+				<td th:text="${data.version}"> </td>
+				<td th:text="${data.qty}"> </td> 
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

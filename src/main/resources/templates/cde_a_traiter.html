@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="FR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Menu Fabrication</title>
+</head>
+<body>
+	<!-- Selection Commande commandes en cours / Details / Case a cocher Fabriqué  -->
+	<h2>Liste des Cablages à Produire</h2>
+	<form action="#" th:action="@{/cablage/selected}" th:object="${form}"
+		method="post"
+	>
+		<fieldset>
+			<input type="submit" id="submitButton" th:value="Save"> <input
+				type="reset" id="resetButton" name="reset" th:value="Reset"
+			/>
+			<table>
+				<thead>
+					<tr>
+						<th>IdCommande</th>
+						<th>Raison Sociale </th>
+						<th>Référence plan</th>
+						<th>Version</th>
+						<th>Quantité à produire</th>
+						<th>Quantité selectionné</th>
+						<th>Selection Magasin</th>
+						<th>Selection Commande</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="cablage,itemStat : *{commande_a_honorer}">
+
+						<td> <input th:field="*{commande_a_honorer[__${itemStat.index}__].IdCommande}" disabled> </td>
+						<td> <input th:field="*{commande_a_honorer[__${itemStat.index}__].RaisonSociale}" disabled> </td>
+						<td> <input th:field="*{commande_a_honorer[__${itemStat.index}__].reference}" disabled> </td>
+						<td> <input th:field="*{commande_a_honorer[__${itemStat.index}__].version}" disabled> </td>
+						<td> <input th:field="*{commande_a_honorer[__${itemStat.index}__].qty}" disabled> </td>
+						<td> <input type="number" min=1 th:max="*{commande_a_honorer[__${itemStat.index}__].qty}" name="quantitySelected" > 
+						<td>
+							<select>
+									<option value="0">Selection magasin</option>
+									<option th:each="magasin,itemStat:${form.magasin_selected}"
+										th:value="${magasin.VilleMagasin}"
+										th:text="${magasin.VilleMagasin}"
+									></option>
+							</select>
+						</td>
+						<td id="totalQty"> <input type="checkbox" th:id="|selectionCde-${__${itemStat.index}__}|" th:name="selectionCde" th:checked="${isSelected[__${itemStat.index}__]}" 
+							th:value="${isSelected[__${itemStat.index}__]}"> 
+						<input type="hidden" th:name="|IdCommande-${__${itemStat.index}__]|" th:value="" >
+						</td>
+				</tbody>
+			</table>
+		</fieldset>
+	</form>
+
+
+	<!-- 	<div> -->
+	<!-- 		<h4>selection des cablages a fabriquer</h4> -->
+	<!-- 		<select id="Idcommande" name="Idcommande"> -->
+	<!-- 			<option th:each="IdCde: ${tableau_cablage_a_produire}" -->
+	<!-- 							th:value="${IdCde.IdCommande}" -->
+	<!-- 							th:text="${IdCde.IdCommande}"/>  -->
+	<!-- 		</select> -->
+
+
+
+	<!-- 	</div> -->
+	<script type="text/javascript">
+		
+	</script>
+
+
+
+</body>
+</html>
